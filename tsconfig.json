@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es5",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "isolatedModules": false,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["dom", "es2015.promise", "es5"]
+  },
+}
