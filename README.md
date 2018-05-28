@@ -14,7 +14,7 @@ Key features:
 
 First you want to get a fresh copy of the plugin. You can get it from this repo or from npm, ain't that handy.
 
-[![npm](https://img.shields.io/npm/dt/@koreez/phaser3-ninepatch-plugin.svg)](https://www.npmjs.com/package/@koreez/phaser3-ninepatch-plugin)
+[![npm](https://img.shields.io/npm/dt/@koreez/phaser3-ninepatch.svg)](https://www.npmjs.com/package/@koreez/phaser3-ninepatch)
 
 ```
 npm install @koreez/phaser3-ninepatch --save
