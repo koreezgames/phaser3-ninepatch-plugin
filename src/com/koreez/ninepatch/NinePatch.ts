@@ -1,4 +1,4 @@
-import Phaser, { GameObjects } from 'phaser';
+import Phaser from 'phaser';
 import IPatchesConfig, { normalizePatchesConfig } from './IPatchesConfig';
 
 export default class NinePatch extends Phaser.GameObjects.RenderTexture {
@@ -17,13 +17,10 @@ export default class NinePatch extends Phaser.GameObjects.RenderTexture {
 
   private originTexture: Phaser.Textures.Texture;
   private originFrame: Phaser.Textures.Frame;
-  private originWidth: number;
-  private originHeight: number;
   private textureXs: number[];
   private textureYs: number[];
   private finalXs: number[];
   private finalYs: number[];
-  private hasData: boolean = false;
   private config: IPatchesConfig;
 
   constructor(
@@ -38,8 +35,6 @@ export default class NinePatch extends Phaser.GameObjects.RenderTexture {
   ) {
     super(scene, x, y, width, height);
     this.setOrigin(0.5, 0.5);
-    this.originWidth = width;
-    this.originHeight = height;
     this.config =
       config || this.scene.cache.custom.ninePatch.get(frame ? `${frame}` : key);
     normalizePatchesConfig(this.config);
@@ -51,36 +46,11 @@ export default class NinePatch extends Phaser.GameObjects.RenderTexture {
     this.drawPatches();
   }
 
-  public resize(width: number, height: number): GameObjects.GameObject {
-    if (this.renderer.type === Phaser.WEBGL) {
-      const gl: any = (this.renderer as any).gl;
-      (this as any).texture = (this.renderer as any).createTexture2D(
-        0,
-        gl.NEAREST,
-        gl.NEAREST,
-        gl.CLAMP_TO_EDGE,
-        gl.CLAMP_TO_EDGE,
-        gl.RGBA,
-        null,
-        width,
-        height,
-        false,
-      );
-      (this as any).framebuffer = (this.renderer as any).createFramebuffer(
-        width,
-        height,
-        (this as any).texture,
-        false,
-      );
-    } else if (this.renderer.type === Phaser.CANVAS) {
-      console.warn(
-        `Currently Nine Patch Plugin doesn't support 'CANVAS' renderer.`,
-      );
+  public resize(width: number, height: number): this {
+    if (this.width === width && this.height === height) {
+      return;
     }
-
-    this.setSize(width, height);
-    this.originWidth = width;
-    this.originHeight = height;
+    super.resize(width, height);
     this.configurePatches(this.config);
     this.drawPatches();
     return this;
@@ -102,26 +72,11 @@ export default class NinePatch extends Phaser.GameObjects.RenderTexture {
     ];
 
     // These are the positions we need the eventual texture to have
-    this.finalXs = [
-      0,
-      config.left,
-      this.originWidth - config.right,
-      this.originWidth,
-    ];
-    this.finalYs = [
-      0,
-      config.top,
-      this.originHeight - config.bottom,
-      this.originHeight,
-    ];
-
-    this.hasData = true;
+    this.finalXs = [0, config.left, this.width - config.right, this.width];
+    this.finalYs = [0, config.top, this.height - config.bottom, this.height];
   }
 
   private drawPatches(): void {
-    if (!this.hasData) {
-      return;
-    }
     let patchIndex: number = 0;
     for (let yi: number = 0; yi < 3; yi++) {
       for (let xi: number = 0; xi < 3; xi++) {

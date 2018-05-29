@@ -38,6 +38,6 @@
   "author": "Koreez LLC <hello@koreez.com>",
   "license": "MIT",
   "dependencies": {
-    "phaser": "^3.9.0"
+    "phaser": "git+https://github.com/photonstorm/phaser.git#45c373f9f490f586b65debec4b0ab909e2ec6df4"
   }
 }

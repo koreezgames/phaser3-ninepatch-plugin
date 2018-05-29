@@ -20059,6 +20059,13 @@ declare namespace Phaser {
              */
             setVisible(value: boolean): this;
 
+            /**
+             * Sets the size of this Game Object.
+             * @param width The width of this Game Object.
+             * @param height The height of this Game Object.
+             */
+            resize(width: number, height: number): this;
+
         }
 
         /**
