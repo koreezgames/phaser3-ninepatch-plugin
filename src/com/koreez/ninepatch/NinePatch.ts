@@ -17,10 +17,6 @@ export default class NinePatch extends Phaser.GameObjects.RenderTexture {
 
   private originTexture: Phaser.Textures.Texture;
   private originFrame: Phaser.Textures.Frame;
-  private textureXs: number[];
-  private textureYs: number[];
-  private finalXs: number[];
-  private finalYs: number[];
   private config: IPatchesConfig;
 
   constructor(
@@ -42,7 +38,6 @@ export default class NinePatch extends Phaser.GameObjects.RenderTexture {
     this.originFrame =
       (this.originTexture.frames as any)[frame] ||
       (this.originTexture.frames as any)[NinePatch.__BASE];
-    this.configurePatches(this.config);
     this.drawPatches();
   }
 
@@ -51,47 +46,54 @@ export default class NinePatch extends Phaser.GameObjects.RenderTexture {
       return;
     }
     super.resize(width, height);
-    this.configurePatches(this.config);
     this.drawPatches();
     return this;
   }
 
-  private configurePatches(config: any): void {
+  private drawPatches(): void {
     // The positions we want from the base texture
-    this.textureXs = [
+    const textureXs: number[] = [
       0,
-      config.left,
-      this.originFrame.width - config.right,
+      this.config.left,
+      this.originFrame.width - this.config.right,
       this.originFrame.width,
     ];
-    this.textureYs = [
+    const textureYs: number[] = [
       0,
-      config.top,
-      this.originFrame.height - config.bottom,
+      this.config.top,
+      this.originFrame.height - this.config.bottom,
       this.originFrame.height,
     ];
 
     // These are the positions we need the eventual texture to have
-    this.finalXs = [0, config.left, this.width - config.right, this.width];
-    this.finalYs = [0, config.top, this.height - config.bottom, this.height];
-  }
+    const finalXs: number[] = [
+      0,
+      this.config.left,
+      this.width - this.config.right,
+      this.width,
+    ];
+    const finalYs: number[] = [
+      0,
+      this.config.top,
+      this.height - this.config.bottom,
+      this.height,
+    ];
 
-  private drawPatches(): void {
     let patchIndex: number = 0;
     for (let yi: number = 0; yi < 3; yi++) {
       for (let xi: number = 0; xi < 3; xi++) {
         const patch: Phaser.Textures.Frame = this.createPatchFrame(
           NinePatch.patches[patchIndex],
-          this.textureXs[xi], // x
-          this.textureYs[yi], // y
-          this.textureXs[xi + 1] - this.textureXs[xi], // width
-          this.textureYs[yi + 1] - this.textureYs[yi], // height
+          textureXs[xi], // x
+          textureYs[yi], // y
+          textureXs[xi + 1] - textureXs[xi], // width
+          textureYs[yi + 1] - textureYs[yi], // height
         );
         this.save();
-        this.translate(this.finalXs[xi], this.finalYs[yi]);
+        this.translate(finalXs[xi], finalYs[yi]);
         this.scale(
-          (this.finalXs[xi + 1] - this.finalXs[xi]) / patch.width,
-          (this.finalYs[yi + 1] - this.finalYs[yi]) / patch.height,
+          (finalXs[xi + 1] - finalXs[xi]) / patch.width,
+          (finalYs[yi + 1] - finalYs[yi]) / patch.height,
         );
         (this as any).draw(patch.texture, patch, 0, 0);
         this.restore();
