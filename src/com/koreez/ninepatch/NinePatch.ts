@@ -29,7 +29,7 @@ export default class NinePatch extends Phaser.GameObjects.RenderTexture {
     frame?: string | number,
     config?: IPatchesConfig,
   ) {
-    super(scene, x, y, width, height);
+    super(scene, x, y, Math.max(width, 2), Math.max(height, 2));
     this.setOrigin(0.5, 0.5);
     this.config =
       config || this.scene.cache.custom.ninePatch.get(frame ? `${frame}` : key);
@@ -45,6 +45,8 @@ export default class NinePatch extends Phaser.GameObjects.RenderTexture {
     if (this.width === width && this.height === height) {
       return;
     }
+    width = Math.max(width, this.config.left + this.config.right);
+    height = Math.max(height, this.config.top + this.config.bottom);
     super.resize(width, height);
     this.drawPatches();
     return this;
@@ -114,8 +116,8 @@ export default class NinePatch extends Phaser.GameObjects.RenderTexture {
       return this.originTexture.add(
         name,
         this.originFrame.sourceIndex,
-        this.originFrame.x + x,
-        this.originFrame.y + y,
+        this.originFrame.cutX + x,
+        this.originFrame.cutY + y,
         width,
         height,
       );
