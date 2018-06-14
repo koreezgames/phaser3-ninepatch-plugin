@@ -1,6 +1,6 @@
 {
   "name": "@koreez/phaser3-ninepatch",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Phaser3 Nine Patch",
   "main": "lib/index.js",
   "scripts": {
@@ -38,6 +38,6 @@
   "author": "Koreez LLC <hello@koreez.com>",
   "license": "MIT",
   "dependencies": {
-    "phaser": "git+https://github.com/photonstorm/phaser.git#45c373f9f490f586b65debec4b0ab909e2ec6df4"
+    "phaser": "^3.10.1"
   }
 }
