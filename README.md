@@ -106,3 +106,9 @@ When using resize method, make sure values are not lower than the width of the i
 var ninePatch = this.add.ninePatch(5, 5, 48, 48, 'image');
 ninePatch.resize(100, 200);
 ```
+
+## Credits
+
+Big thanks to this great repo:
+
+https://github.com/orange-games/phaser-nineslice
