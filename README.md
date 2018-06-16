@@ -15,6 +15,14 @@ Key features:
 - Low memory usage
 - Easy to use API
 
+## What is Nine-Patch?
+
+A **Nine-Patch** is an image format that uses extra information, defining what parts of it should be scaled (and which are not) when the image is rendered in a larger or smaller size. This technique is very useful for creating UI components like buttons, panels, containers, etc.
+
+Using this technique, you can define the background of multiples UI components like panels or buttons with the same image asset. You can also create large panels with a reduced image asset so is very useful for optimizing your project resources.
+
+![Phaser3 Nine Patch](https://raw.githubusercontent.com/koreezgames/phaser3-ninepatch-plugin/master/what-is-nine-patch.png)
+
 ## Getting Started
 
 First you want to get a fresh copy of the plugin. You can get it from this repo or from npm, ain't that handy.
@@ -55,7 +63,12 @@ So you can add a 9-patch image to your game just like any other image once it's 
 
 ```javascript
 //We specify the x and y position, the width and height and the key for the image of the image. It will be automaticly scaled!
-this.add.ninePatch(100, 100, 200, 50, 'my-image');
+this.add.ninePatch(100, 100, 200, 400, 'my-image', null, {
+  top: 10, // Amount of pixels for top
+  bottom: 20, // Amount of pixels for bottom
+  left: 30, // Amount of pixels for left
+  right: 40, // Amount of pixels for right
+});
 ```
 
 Or if you'd want to do something with it first:
@@ -66,13 +79,24 @@ var ninePatch = this.make.ninePatch({
   key: 'my-image',
   width: 200,
   height: 200,
+  patchesConfig: {
+    top: 10, // Amount of pixels for top
+    bottom: 20, // Amount of pixels for bottom
+    left: 30, // Amount of pixels for left
+    right: 40, // Amount of pixels for right
+  },
 });
 ninePatch.x = 20;
 ninePatch.y = 20;
 this.add.existing(ninePatch);
 
 //Or we use the Constructor
-var ninePatch = new NinePatch(this, 0, 0, 200, 50, 'my-image');
+var ninePatch = new NinePatch(this, 0, 0, 200, 50, 'my-image', null, {
+  top: 10, // Amount of pixels for top
+  bottom: 20, // Amount of pixels for bottom
+  left: 30, // Amount of pixels for left
+  right: 40, // Amount of pixels for right
+});
 ninePatch.x = 50;
 ninePatch.y = 50;
 this.add.existing(nineSlice);
@@ -108,7 +132,9 @@ this.add.existing(ninePatch);
 When using resize method, make sure values are not lower than the width of the image corners
 
 ```javascript
-var ninePatch = this.add.ninePatch(5, 5, 48, 48, 'image');
+var ninePatch = this.add.ninePatch(5, 5, 48, 48, 'image', null, {
+  top: 5, // Amount of pixels for top, bottom, left, right
+});
 ninePatch.resize(100, 200);
 ```
 
