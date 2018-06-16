@@ -1,14 +1,19 @@
 # Phaser3 Nine Patch
 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/koreezgames/phaser3-ninepatch-plugin/blob/master/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/koreezgames/phaser3-ninepatch-plugin.svg)](https://github.com/koreezgames/phaser3-ninepatch-plugin)
 [![David](https://david-dm.org/koreezgames/phaser3-ninepatch-plugin.svg)]() [![Project status](https://img.shields.io/badge/status-active-brightgreen.svg)](#status)
+[![Code Climate](https://img.shields.io/github/issues/koreezgames/phaser3-ninepatch-plugin.svg)](https://github.com/koreezgames/phaser3-ninepatch-plugin)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![Blazing Fast](https://img.shields.io/badge/speed-blazing%20%F0%9F%94%A5-brightgreen.svg)](https://twitter.com/acdlite/status/974390255393505280)
 
 Phaser3 Nine Patch plugin adds 9-slice scaling support to Phaser3!
 
 Key features:
 
-* Blazing fast
-* Low memory usage
-* Easy to use API
+- Blazing fast
+- Low memory usage
+- Easy to use API
 
 ## Getting Started
 
