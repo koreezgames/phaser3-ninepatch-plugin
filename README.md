@@ -21,7 +21,7 @@ A **Nine-Patch** is an image format that uses extra information, defining what p
 
 Using this technique, you can define the background of multiples UI components like panels or buttons with the same image asset. You can also create large panels with a reduced image asset so is very useful for optimizing your project resources.
 
-![Phaser3 Nine Patch](https://raw.githubusercontent.com/koreezgames/phaser3-ninepatch-plugin/master/what-is-nine-patch.png)
+![Phaser3 Nine Patch](https://raw.githubusercontent.com/koreezgames/phaser3-ninepatch-plugin/master/assets/what-is-nine-patch.png)
 
 ## Getting Started
 
