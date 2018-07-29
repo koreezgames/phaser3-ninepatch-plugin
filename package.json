@@ -1,43 +1,98 @@
 {
-  "name": "@koreez/phaser3-ninepatch",
-  "version": "1.1.0",
-  "description": "Phaser3 Nine Patch",
-  "main": "lib/index.js",
-  "scripts": {
-    "build": "webpack --config config/webpack.config.js --mode production"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/koreezgames/phaser3-ninepatch-plugin.git"
-  },
-  "types": "./lib/index.d.ts",
-  "devDependencies": {
-    "case-sensitive-paths-webpack-plugin": "^2.1.2",
-    "clean-webpack-plugin": "^0.1.19",
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "git-revision-webpack-plugin": "^3.0.3",
-    "prettier": "^1.12.1",
-    "ts-loader": "^4.1.0",
-    "tslint": "^5.9.1",
-    "tslint-config-prettier": "^1.13.0",
-    "tslint-loader": "^3.6.0",
-    "typescript": "^2.8.1",
-    "webpack": "^4.9.1",
-    "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^2.1.4",
-    "webpack-merge": "^4.1.2"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": "Koreez LLC <hello@koreez.com>",
-  "license": "MIT",
-  "dependencies": {
-    "phaser": "^3.10.1"
-  }
+    "name": "@koreez/phaser3-ninepatch",
+    "version": "1.1.1",
+    "description": "Phaser3 Nine Patch",
+    "main": "lib/index.js",
+    "typings": "lib/index.d.ts",
+    "scripts": {
+        "start": "webpack-dev-server --config ./webpack.example.config.js",
+        "test": "karma start --single-run",
+        "mocha": "mocha test/**/*.test.ts --require ts-node/register",
+        "autoformat": "prettier --config .prettierrc --write {src,test}{/,/**/}{*,*.test}.ts",
+        "tslint-check:src": "tslint-config-prettier-check ./tslint.json",
+        "tslint-check:test": "tslint-config-prettier-check ./tslint.test.json",
+        "tslint:src": "tslint --project tsconfig.json",
+        "tslint:test": "tslint --config tslint.test.json --project tsconfig.test.json",
+        "tslint": "npm run tslint-check:src && npm run tslint-check:test && npm run tslint:src && npm run tslint:test",
+        "clean-up": "rimraf .nyc_output && rimraf coverage && rimraf lib && rimraf lib-test && rimraf dist-test",
+        "compile:src": "tsc -d --importHelpers",
+        "compile:test": "tsc -p tsconfig.test.json -d --importHelpers",
+        "dev": "webpack",
+        "build": "webpack --env.production",
+        "prepare": "npm run clean-up && npm run compile:src",
+        "prepublishOnly": "publish-please guard",
+        "publish-please": "npm run tslint && npm run autoformat && npm run clean-up && npm run test && publish-please"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:RobotlegsJS/RobotlegsJS-Pixi.git"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    },
+    "keywords": [
+        "Phaser3",
+        "Phaser",
+        "ninepatch",
+        "nine patch",
+        "nine slice"
+    ],
+    "author": "Koreez LLC",
+    "contributors": [
+        "Sargis Sargsyan <sargsyan.sargis.89@gmail.com>",
+        "Gnun Ulikhanyan <gnun.ulikhanyan@gmail.com>"
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/koreezgames/phaser3-ninepatch-plugin/issues"
+    },
+    "homepage": "https://github.com/koreezgames/phaser3-ninepatch-plugin#readme",
+    "dependencies": {
+        "phaser": "^3.11.0"
+    },
+    "devDependencies": {
+        "@types/bluebird": "^3.5.23",
+        "@types/chai": "^4.1.3",
+        "@types/mocha": "^5.2.1",
+        "@types/sinon": "^5.0.1",
+        "bluebird": "^3.5.1",
+        "browserify-versionify": "^1.0.6",
+        "chai": "^4.1.2",
+        "es6-map": "^0.1.5",
+        "es6-symbol": "^3.1.1",
+        "glslify": "^6.1.1",
+        "html-webpack-plugin": "^3.2.0",
+        "imports-loader": "^0.8.0",
+        "istanbul": "^0.4.5",
+        "istanbul-instrumenter-loader": "^3.0.1",
+        "karma": "^2.0.5",
+        "karma-chai": "^0.1.0",
+        "karma-chai-sinon": "^0.1.5",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-coverage-istanbul-reporter": "^2.0.1",
+        "karma-es6-shim": "^1.0.0",
+        "karma-mocha": "^1.3.0",
+        "karma-mocha-reporter": "^2.2.5",
+        "karma-phantomjs-launcher": "^1.0.4",
+        "karma-remap-istanbul": "^0.6.0",
+        "karma-sinon": "^1.0.5",
+        "karma-sourcemap-loader": "^0.3.7",
+        "karma-sourcemap-writer": "^0.1.2",
+        "karma-webpack": "^3.0.0",
+        "mocha": "^5.2.0",
+        "prettier": "^1.14.0",
+        "publish-please": "^3.0.1",
+        "remap-istanbul": "^0.11.1",
+        "rimraf": "^2.6.2",
+        "sinon": "^5.1.1",
+        "sinon-chai": "^3.1.0",
+        "ts-loader": "^4.4.1",
+        "ts-node": "^6.1.0",
+        "tslint": "^5.10.0",
+        "tslint-config-prettier": "^1.13.0",
+        "typescript": "^2.9.1",
+        "webpack": "^4.16.3",
+        "webpack-cli": "^3.0.3",
+        "webpack-dev-server": "^3.1.4"
+    }
 }

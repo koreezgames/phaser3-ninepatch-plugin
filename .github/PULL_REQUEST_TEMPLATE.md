@@ -1,13 +1,43 @@
-## Thanks for sending a pull request! ❤️
+<!--- Provide a general summary of your changes in the Title above -->
 
-### Description
+## Description
 
-Please Describe the big picture of your changes here to communicate to the maintainers why we should accept this pull request.
-If it fixes a bug or resolves a feature request, be sure to link to that issue.
-Please check the commit's or even all commits' message styles matches our requested structure.
+<!--- Describe your changes in detail -->
 
-### Your environment
-* version of phaser
-* version of npm
-* version of node
-* which browser and its version
+## Related Issue
+
+<!--- This project only accepts pull requests related to open issues -->
+<!--- If suggesting a new feature or change, please discuss it in an issue first -->
+<!--- If fixing a bug, there should be an issue describing it with steps to reproduce -->
+<!--- Please link to the issue here: -->
+
+## Motivation and Context
+
+<!--- Why is this change required? What problem does it solve? -->
+
+## How Has This Been Tested?
+
+<!--- Please describe in detail how you tested your changes. -->
+<!--- Include details of your testing environment, and the tests you ran to -->
+<!--- see how your change affects other areas of the code, etc. -->
+
+## Types of changes
+
+<!--- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
+
+- [ ] Updated docs / Refactor code / Added a tests case (non-breaking change)
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Breaking change (fix or feature that would cause existing functionality to change)
+
+## Checklist:
+
+<!--- Go over all the following points, and put an `x` in all the boxes that apply. -->
+<!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
+
+- [ ] My code follows the code style of this project.
+- [ ] My change requires a change to the documentation.
+- [ ] I have updated the documentation accordingly.
+- [ ] I have read the **CONTRIBUTING** document.
+- [ ] I have added tests to cover my changes.
+- [ ] All new and existing tests passed.

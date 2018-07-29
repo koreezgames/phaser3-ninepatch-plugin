@@ -1,19 +1,35 @@
-## Thanks for opening an issue! 💔
+<!--- Provide a general summary of the issue in the Title above -->
 
-### Subject of the issue
-Describe your issue here.
+## Expected Behavior
+<!--- If you're describing a bug, tell us what should happen -->
+<!--- If you're suggesting a change/improvement, tell us how it should work -->
 
-### Your environment
-* version of Phaser
-* version of npm
-* version of node
-* which browser and its version
+## Current Behavior
+<!--- If describing a bug, tell us what happens instead of the expected behavior -->
+<!--- If suggesting a change/improvement, explain the difference from current behavior -->
 
-### Steps to reproduce
-Tell us how to reproduce this issue. Please provide a working demo if its possible
+## Possible Solution
+<!--- Not obligatory, but suggest a fix/reason for the bug, -->
+<!--- or ideas how to implement the addition or change -->
 
-### Expected behavior
-Tell us what should happen
+## Steps to Reproduce (for bugs)
+<!--- Provide a link to a live example, or an unambiguous set of steps to -->
+<!--- reproduce this bug. Include code to reproduce, if relevant -->
+1.
+2.
+3.
+4.
 
-### Actual behavior
-Tell us what happens instead
+## Context
+<!--- How has this issue affected you? What are you trying to accomplish? -->
+<!--- Providing context helps us come up with a solution that is most useful in the real world -->
+
+## Your Environment
+<!--- Include as many relevant details about the environment you experienced the bug in -->
+* Version used:
+* Environment name and version (e.g. Chrome 39, node.js 5.4):
+* Operating System and version (desktop or mobile):
+* Link to your project:
+
+# Stack trace
+<!--- Include stack trace -->

@@ -1,21 +1,11 @@
-import NinePatchPlugin from './com/koreez/ninepatch/NinePatchPlugin';
+// ------------------------------------------------------------------------------
+//  Copyright (c) 2018 Koreez LLC. All Rights Reserved.
+//
+//  NOTICE: You are permitted to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+// ------------------------------------------------------------------------------
 
-export {
-  default as INinePatchCreator,
-} from './com/koreez/ninepatch/INinePatchCreator';
-
-export {
-  default as INinePatchFactory,
-} from './com/koreez/ninepatch/INinePatchFactory';
-
-export {
-  default as INinePatchConfig,
-} from './com/koreez/ninepatch/INinePatchConfig';
-
-export {
-  default as IPatchesConfig,
-} from './com/koreez/ninepatch/IPatchesConfig';
-
-export { default as NinePatch } from './com/koreez/ninepatch/NinePatch';
-
-export default NinePatchPlugin;
+/**
+ * NinePatchPlugin
+ */
+export { NinePatchPlugin } from "./com/koreez/plugin/NinePatchPlugin";
