@@ -1,4 +1,4 @@
-# RobotlegsJS PixiJS Extension
+# Phaser3 Nine Patch
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/RobotlegsJS/RobotlegsJS/blob/master/LICENSE)
 [![Build Status](https://secure.travis-ci.org/koreezgames/phaser3-ninepatch-plugin.svg?branch=master)](https://travis-ci.org/koreezgames/phaser3-ninepatch-plugin)
