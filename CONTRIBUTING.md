@@ -11,19 +11,19 @@ $ git clone https://github.com/koreezgames/phaser3-ninepatch-plugin.git
 2 - Install npm dependencies using yarn:
 
 ```
-$ npm install
+$ yarn install
 ```
 
 3 - Run start process
 
 ```
-$ npm run start
+$ yarn run start
 ```
 
 4 - Run test process
 
 ```
-$ npm run test
+$ yarn test
 ```
 
 ## Guidelines
@@ -36,7 +36,7 @@ $ npm run test
     the test to ensure that the issue has been resolved. This helps us to prevent
     fixed bugs from happening again in the future.
 
--   Always format your code using `npm run autoformat`.
+-   Always format your code using `yarn run autoformat`.
 
 -   Please keep the test coverage at 100%. Write additional unit test if
     necessary.
@@ -45,5 +45,5 @@ $ npm run test
     public interface of the package or it includes significant architecture
     changes.
 
--   Feel free to ask for help from other members of the RobotlegsJS team via the
+-   Feel free to ask for help from other members of the Koreez team via the
     [github issues](https://github.com/koreezgames/phaser3-ninepatch-plugin/issues).
