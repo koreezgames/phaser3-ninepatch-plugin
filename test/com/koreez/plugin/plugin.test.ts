@@ -28,7 +28,7 @@ describe("Ninepatch Plugin", () => {
         let plugin: NinePatchPlugin;
         function create() {
             plugin = this.plugins.get("NinePatchPlugin");
-            assert.isTrue(plugin);
+            assert.isTrue(plugin instanceof NinePatchPlugin);
         }
         (window as any).game = new Phaser.Game(config);
     });

@@ -1,6 +1,6 @@
-import IPatchesConfig, { normalizePatchesConfig } from "./IPatchesConfig";
+import { IPatchesConfig, normalizePatchesConfig } from "./IPatchesConfig";
 
-export default class NinePatch extends Phaser.GameObjects.RenderTexture {
+export class NinePatch extends Phaser.GameObjects.RenderTexture {
     private static readonly __BASE: string = "__BASE";
     private static readonly patches: string[] = ["[0][0]", "[1][0]", "[2][0]", "[0][1]", "[1][1]", "[2][1]", "[0][2]", "[1][2]", "[2][2]"];
 

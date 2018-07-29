@@ -1,6 +1,6 @@
-import NinePatch from "./NinePatch";
+import { NinePatch } from "./NinePatch";
 
-export default interface INinePatchFactory extends Phaser.GameObjects.GameObjectFactory {
+export interface INinePatchFactory extends Phaser.GameObjects.GameObjectFactory {
     ninePatch: (
         x: number,
         y: number,

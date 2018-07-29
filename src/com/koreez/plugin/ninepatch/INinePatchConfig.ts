@@ -1,4 +1,4 @@
-export default interface INinePatchConfig {
+export interface INinePatchConfig {
     x: number;
     y: number;
     width: number;

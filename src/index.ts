@@ -9,3 +9,13 @@
  * NinePatchPlugin
  */
 export { NinePatchPlugin } from "./com/koreez/plugin/NinePatchPlugin";
+
+export { INinePatchCreator } from "./com/koreez/plugin/ninepatch/INinePatchCreator";
+
+export { INinePatchFactory } from "./com/koreez/plugin/ninepatch/INinePatchFactory";
+
+export { INinePatchConfig } from "./com/koreez/plugin/ninepatch/INinePatchConfig";
+
+export { IPatchesConfig } from "./com/koreez/plugin/ninepatch/IPatchesConfig";
+
+export { NinePatch } from "./com/koreez/plugin/ninepatch/NinePatch";

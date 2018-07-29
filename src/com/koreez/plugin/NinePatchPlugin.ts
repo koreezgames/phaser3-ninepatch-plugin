@@ -1,5 +1,5 @@
 import "phaser";
-import NinePatch from "./ninepatch/NinePatch";
+import { NinePatch } from "./ninepatch/NinePatch";
 
 export class NinePatchPlugin extends Phaser.Plugins.BasePlugin {
     constructor(pluginManager: Phaser.Plugins.PluginManager) {

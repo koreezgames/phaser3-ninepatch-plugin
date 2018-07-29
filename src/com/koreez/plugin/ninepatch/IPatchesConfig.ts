@@ -1,4 +1,4 @@
-export default interface IPatchesConfig {
+export interface IPatchesConfig {
     top: number;
     left?: number;
     right?: number;
