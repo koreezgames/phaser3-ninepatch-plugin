@@ -55,6 +55,25 @@ So, to load the plugin, include it in phaser game config.
 }
 ```
 
+#### TypesScript usage:
+You have to override `Phaser.Scene` `add` and `make` objects
+```javascript
+import {
+  INinePatchCreator,
+  INinePatchFactory,
+} from '@koreez/phaser3-ninepatch';
+
+export default class BaseScene extends Phaser.Scene {
+  public add: INinePatchFactory;
+  public make: INinePatchCreator;
+  
+  constructor(name: string){
+    super(name);
+    //more stuff here
+  }
+}
+```
+
 The plugin will patch your Phaser game with additional add/make methods so the NinePatch game object fits up in Phaser like any normal object!
 
 ### Adding a container
