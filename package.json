@@ -47,7 +47,8 @@
         "url": "https://github.com/koreezgames/phaser3-ninepatch-plugin/issues"
     },
     "homepage": "https://github.com/koreezgames/phaser3-ninepatch-plugin#readme",
-    "dependencies": {
+    "dependencies": {},
+    "peerDependencies": {
         "phaser": "^3.11.0"
     },
     "devDependencies": {
