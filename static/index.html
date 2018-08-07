@@ -7,18 +7,6 @@
   <link rel="stylesheet" href="styles/main.css">
   <link rel="manifest" href="manifest.json">
 
-  <script>
-    if (navigator.serviceWorker) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(function () {
-          console.log('service worker installed');
-        })
-        .catch(function (err) {
-          console.log('Error', err);
-        });
-    }
-  </script>
-
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </head>
 

@@ -48,6 +48,17 @@ function create() {
     ninePatch.y = 400;
     this.add.existing(ninePatch);
 
+    this.cache.custom.ninePatch.add("squareYellow", {
+        /* tslint:disable */
+        bottom: 14, // Amount of pixels for bottom
+        left: 6, // Amount of pixels for left
+        right: 6, // Amount of pixels for right
+        top: 10 // Amount of pixels for top
+        /* tslint:enable */
+    });
+
+    this.add.ninePatch(200, 500, 300, 100, "squareYellow");
+
     // Or we use the Constructor
     ninePatch = new NinePatch(this, 230, 400, 200, 50, "squareGreen", null, {
         /* tslint:disable */
@@ -63,18 +74,8 @@ function create() {
 
     setTimeout(() => {
         ninePatch.resize(250, 60);
+        ninePatch.rotation = Math.PI / 4;
     }, 2000);
-
-    this.cache.custom.ninePatch.add("squareYellow", {
-        /* tslint:disable */
-        bottom: 14, // Amount of pixels for bottom
-        left: 6, // Amount of pixels for left
-        right: 6, // Amount of pixels for right
-        top: 10 // Amount of pixels for top
-        /* tslint:enable */
-    });
-
-    this.add.ninePatch(200, 500, 300, 100, "squareYellow");
 }
 
 document.onreadystatechange = () => {

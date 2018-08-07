@@ -28,6 +28,10 @@ export class NinePatch extends Phaser.GameObjects.RenderTexture {
     }
 
     public resize(width: number, height: number): this {
+        if (!this.config) {
+            super.resize(width, height);
+            return this;
+        }
         if (this.width === width && this.height === height) {
             return this;
         }
@@ -57,11 +61,12 @@ export class NinePatch extends Phaser.GameObjects.RenderTexture {
                     textureXs[xi + 1] - textureXs[xi], // width
                     textureYs[yi + 1] - textureYs[yi] // height
                 );
-                this.save();
-                this.translate(finalXs[xi], finalYs[yi]);
-                this.scale((finalXs[xi + 1] - finalXs[xi]) / patch.width, (finalYs[yi + 1] - finalYs[yi]) / patch.height);
-                (this as any).draw(patch.texture, patch, 0, 0);
-                this.restore();
+
+                const patchImg = this.scene.make.image({ x: 0, y: 0, key: patch.texture.key, frame: patch.name });
+                patchImg.setOrigin(0);
+                patchImg.setScale((finalXs[xi + 1] - finalXs[xi]) / patch.width, (finalYs[yi + 1] - finalYs[yi]) / patch.height);
+                (this as any).draw(patchImg, finalXs[xi], finalYs[yi]);
+                patchImg.destroy();
                 ++patchIndex;
             }
         }
