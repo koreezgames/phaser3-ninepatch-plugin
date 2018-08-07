@@ -14,9 +14,9 @@ export default class Game extends Phaser.Game {
 
 function preload() {
     console.log("preload");
-    this.load.image("metalPanel_blueCorner", "assets/metalPanel_blueCorner.png");
-    this.load.image("squareGreen", "assets/squareGreen.png");
-    this.load.image("squareYellow", "assets/squareYellow.png");
+    this.load.image("metalPanel_blueCorner", "static/assets/metalPanel_blueCorner.png");
+    this.load.image("squareGreen", "static/assets/squareGreen.png");
+    this.load.image("squareYellow", "static/assets/squareYellow.png");
 }
 
 function create() {
