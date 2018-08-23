@@ -7,12 +7,12 @@
 
 import "../../../entry";
 
-import { assert } from "chai";
+import { expect } from "chai";
 
 import { NinePatchPlugin } from "../../../../src/com/koreez/plugin/NinePatchPlugin";
 
 describe("Ninepatch Plugin", () => {
-    it("plugin_is_properly_working", () => {
+    it("plugin_is_properly_installed", done => {
         const config = {
             banner: false,
             height: 10,
@@ -28,7 +28,8 @@ describe("Ninepatch Plugin", () => {
         let plugin: NinePatchPlugin;
         function create() {
             plugin = this.plugins.get("NinePatchPlugin");
-            assert.isTrue(plugin instanceof NinePatchPlugin);
+            expect(plugin).instanceOf(NinePatchPlugin);
+            done();
         }
         (window as any).game = new Phaser.Game(config);
     });
