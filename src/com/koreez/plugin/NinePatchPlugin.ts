@@ -22,7 +22,7 @@ export class NinePatchPlugin extends Phaser.Plugins.BasePlugin {
         return this.scene.add.existing(new NinePatch(this.scene, x, y, width, height, key, frame, patchesConfig)) as NinePatch;
     }
 
-    private ninePatchCreator(config: any, addToScene: boolean): NinePatch {
+    private ninePatchCreator(config: any, addToScene?: boolean): NinePatch {
         if (config === undefined) {
             config = {};
         }
