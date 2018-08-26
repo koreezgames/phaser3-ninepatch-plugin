@@ -1,6 +1,6 @@
 # Phaser3 Nine Patch
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/RobotlegsJS/RobotlegsJS/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/koreezgames/phaser3-ninepatch-plugin/blob/master/LICENSE)
 [![Build Status](https://secure.travis-ci.org/koreezgames/phaser3-ninepatch-plugin.svg?branch=master)](https://travis-ci.org/koreezgames/phaser3-ninepatch-plugin)
 [![codebeat badge](https://codebeat.co/badges/e3792494-1875-4826-be00-2124148b9287)](https://codebeat.co/projects/github-com-koreezgames-phaser3-ninepatch-plugin-master)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/63e0c72189fa97ca55db/test_coverage)](https://codeclimate.com/github/koreezgames/phaser3-ninepatch-plugin/test_coverage)
