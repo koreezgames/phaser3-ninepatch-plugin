@@ -10,6 +10,14 @@
 
 Phaser3 Nine Patch plugin adds 9-slice scaling support to Phaser3!
 
+#### Resizing with nine patch
+
+![Nine Patch ](https://raw.githubusercontent.com/koreezgames/phaser3-ninepatch-plugin/master/assets/np.gif)
+
+#### Resizing without nine patch
+
+![Not Nine Patch](https://raw.githubusercontent.com/koreezgames/phaser3-ninepatch-plugin/master/assets/nnp.gif)
+
 Key features:
 
 -   Blazing fast
