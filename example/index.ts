@@ -1,8 +1,8 @@
 /// <reference path="../definitions/phaser.d.ts" />
 
 import "phaser";
-import { NinePatchPlugin } from "../src/com/koreez/plugin/NinePatchPlugin";
 import { NinePatch } from "../src/com/koreez/plugin/ninepatch/NinePatch";
+import { NinePatchPlugin } from "../src/com/koreez/plugin/NinePatchPlugin";
 
 export default class Game extends Phaser.Game {
     public centerX: number;
@@ -145,6 +145,9 @@ function create() {
         }
         /* tslint:enable */
     });
+    setTimeout(() => {
+        newNinePatch.setTexture("squareYellow");
+    }, 4000);
 }
 
 document.onreadystatechange = () => {
