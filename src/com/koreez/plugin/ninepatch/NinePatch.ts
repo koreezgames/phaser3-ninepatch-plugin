@@ -27,6 +27,8 @@ export class NinePatch extends Phaser.GameObjects.RenderTexture {
     }
 
     public resize(width: number, height: number): this {
+        width = Math.round(width);
+        height = Math.round(height);
         if (!this.config) {
             super.resize(width, height);
             return this;
@@ -37,6 +39,7 @@ export class NinePatch extends Phaser.GameObjects.RenderTexture {
         width = Math.max(width, this.config.left + this.config.right);
         height = Math.max(height, this.config.top + this.config.bottom);
         super.resize(width, height);
+        this.updateDisplayOrigin();
         this.drawPatches();
         return this;
     }

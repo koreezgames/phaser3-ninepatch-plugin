@@ -29,7 +29,7 @@ function create() {
         right: 53, // Amount of pixels for right
         top: 32 // Amount of pixels for top
     });
-    let metalPanelDir = 0.5;
+    let metalPanelDir = 0.6;
     this.tweens.add({
         /* tslint:disable */
         targets: metalPanel,
@@ -96,7 +96,7 @@ function create() {
     });
 
     const squareYellow = this.add.ninePatch(550, 500, 300, 100, "squareYellow");
-    let squareYellowDir = 0.5;
+    let squareYellowDir = 0.6;
     this.tweens.add({
         /* tslint:disable */
         targets: squareYellow,
@@ -126,7 +126,7 @@ function create() {
         /* tslint:enable */
     });
     this.add.existing(newNinePatch);
-    let newNinePatchDir = 0.5;
+    let newNinePatchDir = 0.6;
     this.tweens.add({
         /* tslint:disable */
         targets: newNinePatch,
@@ -153,7 +153,7 @@ function create() {
 document.onreadystatechange = () => {
     if (document.readyState === "complete") {
         const config = {
-            banner: false,
+            banner: true,
             height: 600,
             plugins: {
                 global: [{ key: "NinePatchPlugin", plugin: NinePatchPlugin, start: true }]
