@@ -1,6 +1,12 @@
 # Phaser3 Nine Patch Changelog:
 
-## Phaser3 Nine Patch 1.1.2
+## Phaser3 Nine Patch 1.1.3
+
+### v1.1.3
+
+#### Fixed
+
+-   Fix canvas rendering issue.
 
 ### v1.1.2
 
