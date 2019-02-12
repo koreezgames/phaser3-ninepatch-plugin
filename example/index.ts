@@ -1,4 +1,4 @@
-/// <reference path="../definitions/phaser.d.ts" />
+/// <reference path="../types/phaser.d.ts" />
 
 import "phaser";
 import { NinePatch } from "../src/com/koreez/plugin/ninepatch/NinePatch";
