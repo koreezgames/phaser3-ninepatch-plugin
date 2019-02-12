@@ -4,5 +4,5 @@
         "outDir": "lib-test"
     },
     "include": ["./src/**/*.ts", "./test/**/*.ts"],
-    "files": ["./definitions/phaser.d.ts"]
+    "files": ["./types/phaser.d.ts"]
 }
