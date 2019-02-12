@@ -49,7 +49,7 @@
     "homepage": "https://github.com/koreezgames/phaser3-ninepatch-plugin#readme",
     "dependencies": {},
     "peerDependencies": {
-        "phaser": "^3.16.0"
+        "phaser": "^3.12.0"
     },
     "devDependencies": {
         "@types/bluebird": "^3.5.25",
