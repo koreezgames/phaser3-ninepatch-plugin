@@ -1,6 +1,12 @@
 # Phaser3 Nine Patch Changelog:
 
-## Phaser3 Nine Patch 1.1.4
+## Phaser3 Nine Patch 1.1.5
+
+### v1.1.5
+
+#### Fixed
+
+-   Minor fixings.
 
 ### v1.1.4
 
