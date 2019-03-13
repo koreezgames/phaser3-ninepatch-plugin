@@ -76,7 +76,7 @@ export class NinePatch extends Phaser.GameObjects.RenderTexture {
                     textureYs[yi + 1] - textureYs[yi] // height
                 );
 
-                const patchImg = this.scene.make.image({ x: 0, y: 0, key: patch.texture.key, frame: patch.name });
+                const patchImg = new Phaser.GameObjects.Image(this.scene, 0, 0, patch.texture.key, patch.name);
                 patchImg.setOrigin(0);
                 patchImg.setScale((finalXs[xi + 1] - finalXs[xi]) / patch.width, (finalYs[yi + 1] - finalYs[yi]) / patch.height);
                 (this as any).draw(patchImg, finalXs[xi], finalYs[yi]);
