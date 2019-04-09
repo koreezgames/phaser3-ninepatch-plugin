@@ -1,6 +1,6 @@
 {
     "name": "@koreez/phaser3-ninepatch",
-    "version": "1.2.5",
+    "version": "2.0.0",
     "description": "Phaser3 Nine Patch",
     "main": "lib/index.js",
     "typings": "lib/index.d.ts",
