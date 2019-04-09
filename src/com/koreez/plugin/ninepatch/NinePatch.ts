@@ -1,12 +1,14 @@
 import { IPatchesConfig, normalizePatchesConfig } from "./IPatchesConfig";
 
-export class NinePatch extends Phaser.GameObjects.RenderTexture {
+export class NinePatch extends Phaser.GameObjects.Container {
     private static readonly __BASE: string = "__BASE";
     private static readonly patches: string[] = ["[0][0]", "[1][0]", "[2][0]", "[0][1]", "[1][1]", "[2][1]", "[0][2]", "[1][2]", "[2][2]"];
 
     private originTexture: Phaser.Textures.Texture;
     private originFrame: Phaser.Textures.Frame;
     private config: IPatchesConfig;
+    private finalXs: number[];
+    private finalYs: number[];
 
     constructor(
         scene: Phaser.Scene,
@@ -18,19 +20,17 @@ export class NinePatch extends Phaser.GameObjects.RenderTexture {
         frame?: string | number,
         config?: IPatchesConfig
     ) {
-        super(scene, x, y, Math.max(width, 2), Math.max(height, 2));
-        this.setOrigin(0.5, 0.5);
+        super(scene, x, y);
         this.config = config || this.scene.cache.custom.ninePatch.get(frame ? `${frame}` : key);
         normalizePatchesConfig(this.config);
+        this.setSize(width, height);
         this.setTexture(key, frame);
-        this.drawPatches();
     }
 
     public resize(width: number, height: number): this {
         width = Math.round(width);
         height = Math.round(height);
         if (!this.config) {
-            super.resize(width, height);
             return this;
         }
         if (this.width === width && this.height === height) {
@@ -38,8 +38,7 @@ export class NinePatch extends Phaser.GameObjects.RenderTexture {
         }
         width = Math.max(width, this.config.left + this.config.right);
         height = Math.max(height, this.config.top + this.config.bottom);
-        super.resize(width, height);
-        this.updateDisplayOrigin();
+        this.setSize(width, height);
         this.drawPatches();
         return this;
     }
@@ -52,52 +51,66 @@ export class NinePatch extends Phaser.GameObjects.RenderTexture {
 
     public setFrame(frame: string | integer): this {
         this.originFrame = (this.originTexture.frames as any)[frame] || (this.originTexture.frames as any)[NinePatch.__BASE];
+        this.createPatches();
         this.drawPatches();
         return this;
     }
 
-    private drawPatches(): void {
+    public setSize(width: number, height: number): this {
+        super.setSize(width, height);
+        // These are the positions we need the eventual texture to have
+        this.finalXs = [0, this.config.left, this.width - this.config.right, this.width];
+        this.finalYs = [0, this.config.top, this.height - this.config.bottom, this.height];
+        return this;
+    }
+
+    private createPatches(): void {
         // The positions we want from the base texture
         const textureXs: number[] = [0, this.config.left, this.originFrame.width - this.config.right, this.originFrame.width];
         const textureYs: number[] = [0, this.config.top, this.originFrame.height - this.config.bottom, this.originFrame.height];
-
-        // These are the positions we need the eventual texture to have
-        const finalXs: number[] = [0, this.config.left, this.width - this.config.right, this.width];
-        const finalYs: number[] = [0, this.config.top, this.height - this.config.bottom, this.height];
-
         let patchIndex: number = 0;
         for (let yi: number = 0; yi < 3; yi++) {
             for (let xi: number = 0; xi < 3; xi++) {
-                const patch: Phaser.Textures.Frame = this.createPatchFrame(
-                    NinePatch.patches[patchIndex],
+                this.createPatchFrame(
+                    this.getPatchNameByIndex(patchIndex),
                     textureXs[xi], // x
                     textureYs[yi], // y
                     textureXs[xi + 1] - textureXs[xi], // width
                     textureYs[yi + 1] - textureYs[yi] // height
                 );
-
-                const patchImg = new Phaser.GameObjects.Image(this.scene, 0, 0, patch.texture.key, patch.name);
-                patchImg.setOrigin(0);
-                patchImg.setScale((finalXs[xi + 1] - finalXs[xi]) / patch.width, (finalYs[yi + 1] - finalYs[yi]) / patch.height);
-                (this as any).draw(patchImg, finalXs[xi], finalYs[yi]);
-                patchImg.destroy();
                 ++patchIndex;
             }
         }
     }
 
-    private createPatchFrame(patch: string, x: number, y: number, width: number, height: number): Phaser.Textures.Frame {
-        const name: string = `${this.originFrame.name}|${patch}`;
-        if (!this.originTexture.frames.hasOwnProperty(name)) {
-            return this.originTexture.add(
-                name,
-                this.originFrame.sourceIndex,
-                this.originFrame.cutX + x,
-                this.originFrame.cutY + y,
-                width,
-                height
-            );
+    private drawPatches(): void {
+        this.removeAll(true);
+        let patchIndex: number = 0;
+        for (let yi: number = 0; yi < 3; yi++) {
+            for (let xi: number = 0; xi < 3; xi++) {
+                // @ts-ignore
+                const patch: Phaser.Textures.Frame = this.originTexture.frames[this.getPatchNameByIndex(patchIndex)];
+                const patchImg = new Phaser.GameObjects.Image(this.scene, 0, 0, patch.texture.key, patch.name);
+                patchImg.setOrigin(0);
+                patchImg.setPosition(this.finalXs[xi] - this.width * this.originX, this.finalYs[yi] - this.height * this.originY);
+                patchImg.setScale(
+                    (this.finalXs[xi + 1] - this.finalXs[xi]) / patch.width,
+                    (this.finalYs[yi + 1] - this.finalYs[yi]) / patch.height
+                );
+                this.add(patchImg);
+                ++patchIndex;
+            }
         }
-        return (this.originTexture.frames as any)[name];
+    }
+
+    private createPatchFrame(patch: string, x: number, y: number, width: number, height: number): void {
+        if (this.originTexture.frames.hasOwnProperty(patch)) {
+            return;
+        }
+        this.originTexture.add(patch, this.originFrame.sourceIndex, this.originFrame.cutX + x, this.originFrame.cutY + y, width, height);
+    }
+
+    private getPatchNameByIndex(index: number): string {
+        return `${this.originFrame.name}|${NinePatch.patches[index]}`;
     }
 }
