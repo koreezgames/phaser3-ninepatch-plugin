@@ -30,6 +30,7 @@ function create() {
         top: 32 // Amount of pixels for top
     });
     let metalPanelDir = 0.6;
+    metalPanel.setTint(0xff0000);
     this.tweens.add({
         /* tslint:disable */
         targets: metalPanel,
@@ -48,7 +49,12 @@ function create() {
         yoyo: true
         /* tslint:enable */
     });
-
+    setTimeout(() => {
+        metalPanel.setTintFill(0xff0000);
+        setTimeout(() => {
+            metalPanel.clearTint(0xff0000);
+        }, 3000);
+    }, 3000);
     let squareGreen = this.make.ninePatch({
         /* tslint:disable */
         key: "squareGreen",

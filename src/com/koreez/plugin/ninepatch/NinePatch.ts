@@ -9,6 +9,7 @@ export class NinePatch extends Phaser.GameObjects.Container {
     private config: IPatchesConfig;
     private finalXs: number[];
     private finalYs: number[];
+    private internalTint: number;
 
     constructor(
         scene: Phaser.Scene,
@@ -64,6 +65,40 @@ export class NinePatch extends Phaser.GameObjects.Container {
         return this;
     }
 
+    public setTint(tint: number): this {
+        this.tint = tint;
+        return this;
+    }
+
+    public setTintFill(tint: number): this {
+        this.tint = tint;
+        this.tintFill = true;
+        return this;
+    }
+
+    public clearTint(): this {
+        this.each((patch: Phaser.GameObjects.Image) => patch.clearTint());
+        this.internalTint = undefined;
+        return this;
+    }
+
+    public get tintFill(): boolean {
+        return this.first && (this.first as Phaser.GameObjects.Image).tintFill;
+    }
+
+    public set tintFill(value: boolean) {
+        this.each((patch: Phaser.GameObjects.Image) => (patch.tintFill = value));
+    }
+
+    public set tint(value: number) {
+        this.each((patch: Phaser.GameObjects.Image) => patch.setTint(value));
+        this.internalTint = value;
+    }
+
+    get isTinted(): boolean {
+        return this.first && (this.first as Phaser.GameObjects.Image).isTinted;
+    }
+
     private createPatches(): void {
         // The positions we want from the base texture
         const textureXs: number[] = [0, this.config.left, this.originFrame.width - this.config.right, this.originFrame.width];
@@ -84,6 +119,7 @@ export class NinePatch extends Phaser.GameObjects.Container {
     }
 
     private drawPatches(): void {
+        const tintFill = this.tintFill;
         this.removeAll(true);
         let patchIndex: number = 0;
         for (let yi: number = 0; yi < 3; yi++) {
@@ -98,6 +134,8 @@ export class NinePatch extends Phaser.GameObjects.Container {
                     (this.finalYs[yi + 1] - this.finalYs[yi]) / patch.height
                 );
                 this.add(patchImg);
+                patchImg.setTint(this.internalTint);
+                patchImg.tintFill = tintFill;
                 ++patchIndex;
             }
         }
