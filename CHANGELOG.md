@@ -2,11 +2,17 @@
 
 ## Phaser3 Nine Patch 2.0.0
 
+### v2.0.1
+
+#### Added
+
+-   Add `setTint`, `setTintFill` and `clearTint` methods to be able to change tint.
+
 ### v2.0.0
 
 #### Added
 
--   Now NinePatch class extends Phaser.GameObjects.Container instead of Phaser.GameObjects.RenderTexture to not add additional draws and calls
+-   Now NinePatch class extends Phaser.GameObjects.Container instead of Phaser.GameObjects.RenderTexture to not add additional draws and calls.
 
 ### v1.1.5
 
