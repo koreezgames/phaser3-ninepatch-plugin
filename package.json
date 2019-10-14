@@ -52,7 +52,7 @@
         "phaser": "^3.12.0"
     },
     "devDependencies": {
-        "@types/bluebird": "^3.5.26",
+        "@types/bluebird": "^3.5.28",
         "@types/chai": "^4.1.7",
         "@types/mocha": "^5.2.6",
         "@types/sinon": "^7.0.11",
